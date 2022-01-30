@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import RedditProvider from "next-auth/providers/reddit";
 import DiscordProvider from "next-auth/providers/discord";
+import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
@@ -16,6 +17,10 @@ export default NextAuth({
       clientId: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    })
   ],
   secret: process.env.JWT_SECRET,
   adapter: PrismaAdapter(prisma),
