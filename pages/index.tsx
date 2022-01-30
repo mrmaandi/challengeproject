@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import type { GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { useState } from "react";
@@ -82,7 +82,7 @@ const Home: NextPage = ({ challenges }: any) => {
   );
 };
 
-export async function getStaticProps(context: GetStaticProps) {
+export async function getServerSideProps(context: GetServerSideProps) {
   const prisma = new PrismaClient();
 
   const challenges: Challenge[] = await prisma.challenge
