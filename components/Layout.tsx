@@ -1,25 +1,31 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { Button } from "primereact/button";
+import Header from "./Header";
 
 const Layout = ({ children }: any) => {
-  const { data: session } = useSession();
-
   return (
     <>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
-      <div>
-        {session?.user?.name}
-        {session?.user ? (
-          <Button onClick={() => signOut()}>Logout</Button>
-        ) : (
-          <Button onClick={() => signIn()}>Login</Button>
-        )}
-      </div>
-      <main>{children}</main>
+      <Head>
+        <title>ChallengesApp</title>
+      </Head>
+      <Header />
+      <main>
+        <div className="flex">
+          <div className="flex flex-column">
+            <Link href="/">
+              <a>All</a>
+            </Link>
+            <Link href="/joined">
+              <a>Joined by you</a>
+            </Link>
+            <Link href="/created">
+              <a>Created by you</a>
+            </Link>
+          </div>
+          <div className="flex-1">{children}</div>
+        </div>
+      </main>
     </>
   );
 };

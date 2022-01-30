@@ -11,9 +11,6 @@ import { SessionProvider } from "next-auth/react";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider>
-      <Head>
-        <title>ChallengesApp</title>
-      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
